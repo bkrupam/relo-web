@@ -1,40 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-ink-black: #000000;
-  --color-snow: #ffffff;
-  --color-canvas: #f8f8f8;
-  --color-fog: #efefef;
-  --color-pebble: #d9d9d9;
-  --color-graphite: #636363;
-  --color-slate: #959595;
-  --color-steel: #aeaeae;
-  --color-ash: #7c7c7c;
-  --color-rose-quartz: #c679c4;
-  --color-marigold: #ffb005;
-  --color-signal-blue: #0358f7;
-  --color-hot-pink: #fd02f5;
+  /* Colors — Dimension design system */
+  --color-midnight-base: #0a0a0a;
+  --color-storm-gray: #161616;
+  --color-gunmetal: #282828;
+  --color-slate-text: #686868;
+  --color-ash-text: #b2b2b2;
+  --color-silver-whisper: #c2c2c2;
+  --color-ghost-white: #e5e5e5;
+  --color-canvas-white: #ffffff;
+  --color-gradient-aura: #4867af;
+  --color-interactive-glow: #6b62f2;
 
-  /* Border Radius */
-  --radius-image: 10px;
-  --radius-nav: 16px;
-  --radius-card: 30px;
-  --radius-button: 30px;
-  --radius-container: 40px;
-  --radius-pill: 9999px;
+  /* Fonts */
+  --font-geist: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-dm-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale */
+  --text-caption: 14px;
+  --text-body: 16px;
+  --text-subheading: 18px;
+  --text-heading-sm: 24px;
+  --text-heading: 32px;
+  --text-heading-lg: 36px;
+  --text-display: 48px;
+
+  /* Border radius */
+  --radius-callout: 10px;
+  --radius-card: 24px;
+  --radius-hero: 40px;
+  --radius-button: 9999px;
 }
 
 :root {
-  --gradient-spectrum: linear-gradient(
-    90deg,
-    #c679c4 0%,
-    #fa3d1d 25%,
-    #ffb005 50%,
-    #e1e1fe 75%,
-    #0358f7 100%
-  );
-  --shadow-card: rgba(0, 0, 0, 0.08) 0px 0px 8px 0px;
+  --gradient-aura: linear-gradient(rgb(72, 103, 175), rgb(156, 175, 184), rgb(196, 149, 119));
+  --gradient-interactive-glow: radial-gradient(50% 50%, rgb(107, 98, 242) 0%, rgb(255, 255, 255) 100%);
+  --surface-translucent: rgba(0, 0, 0, 0.2);
+  --surface-overlay: rgba(212, 212, 212, 0.1);
+  --shadow-card: drop-shadow(rgba(255, 255, 255, 0.02) 0px 3px 4.5px) drop-shadow(rgba(0, 0, 0, 0.04) 0px 10px 8px) drop-shadow(rgba(0, 0, 0, 0.1) 0px 4px 3px);
 }
 
 * {
@@ -43,18 +47,12 @@
 
 html,
 body {
-  background: #f8f8f8;
-  color: #000000;
-  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background: #0a0a0a;
+  color: #e5e5e5;
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-.spectrum-glow {
-  background: var(--gradient-spectrum);
-  filter: blur(80px);
-  opacity: 0.3;
-}
-
-.spectrum-strip {
-  background: var(--gradient-spectrum);
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
 }

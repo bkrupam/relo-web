@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { DM_Sans, Geist } from "next/font/google";
 import "./globals.css";
+import BottomNav from "./components/BottomNav";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400", "500", "700"],
   variable: "--font-dm-sans",
+});
+
+const geist = Geist({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-geist",
 });
 
 export const metadata: Metadata = {
@@ -19,8 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${dmSans.variable} ${geist.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-[#0a0a0a] text-[#e5e5e5]">
+        {children}
+        <BottomNav />
+      </body>
     </html>
   );
 }
