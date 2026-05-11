@@ -6,6 +6,12 @@ import EmailCapture from "./EmailCapture";
 export default function ScrollHeroDemo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 40);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     function onScroll() {
@@ -53,6 +59,9 @@ export default function ScrollHeroDemo() {
             background: "linear-gradient(160deg, rgb(52,80,145) 0%, rgb(120,140,165) 50%, rgb(170,120,95) 100%)",
             overflow: "hidden",
             willChange: "left, right, top, bottom, border-radius",
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "scale(1)" : "scale(0.97)",
+            transition: "opacity 1s ease, transform 1s ease",
           }}
         >
           {/* Noise/grain overlay */}
@@ -66,18 +75,30 @@ export default function ScrollHeroDemo() {
             className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
             style={{ opacity: heroFade, pointerEvents: heroFade < 0.1 ? "none" : "auto" }}
           >
-            <p className="text-[14px] text-white/50 tracking-[0.35px] mb-5 font-[family-name:var(--font-dm-sans)]">
+            <p
+              className="text-[14px] text-white/50 tracking-[0.35px] mb-5 font-[family-name:var(--font-dm-sans)]"
+              style={{ opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(14px)", transition: "opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s" }}
+            >
               Menu bar reminders for macOS
             </p>
-            <h1 className="text-[56px] font-semibold leading-[1.05] tracking-[-0.672px] text-white max-w-2xl font-[family-name:var(--font-geist)]">
+            <h1
+              className="text-[56px] font-semibold leading-[1.05] tracking-[-0.672px] text-white max-w-2xl font-[family-name:var(--font-geist)]"
+              style={{ opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(14px)", transition: "opacity 0.7s ease 0.28s, transform 0.7s ease 0.28s" }}
+            >
               Remember what matters,{" "}
               <span className="text-white/70">without the noise</span>
             </h1>
-            <p className="mt-5 text-[18px] text-white/55 leading-[1.5] tracking-[0.45px] max-w-sm font-[family-name:var(--font-dm-sans)]">
+            <p
+              className="mt-5 text-[18px] text-white/55 leading-[1.5] tracking-[0.45px] max-w-sm font-[family-name:var(--font-dm-sans)]"
+              style={{ opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(14px)", transition: "opacity 0.7s ease 0.42s, transform 0.7s ease 0.42s" }}
+            >
               Relo lives quietly in your menu bar — surfacing the right reminder at exactly the right moment.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center gap-3 w-full max-w-md">
+            <div
+              className="mt-8 flex flex-col sm:flex-row items-center gap-3 w-full max-w-md"
+              style={{ opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(14px)", transition: "opacity 0.7s ease 0.56s, transform 0.7s ease 0.56s" }}
+            >
               <a
                 href="/Relo.dmg"
                 className="px-5 py-2.5 rounded-[9999px] bg-white text-[#161616] text-[14px] font-medium whitespace-nowrap hover:bg-[#e5e5e5] transition-colors font-[family-name:var(--font-dm-sans)]"
@@ -88,7 +109,10 @@ export default function ScrollHeroDemo() {
               <EmailCapture />
             </div>
 
-            <p className="mt-4 text-[12px] text-white/30 tracking-[0.35px] font-[family-name:var(--font-dm-sans)]">
+            <p
+              className="mt-4 text-[12px] text-white/30 tracking-[0.35px] font-[family-name:var(--font-dm-sans)]"
+              style={{ opacity: mounted ? 1 : 0, transition: "opacity 0.7s ease 0.68s" }}
+            >
               macOS 13 Ventura or later · Free
             </p>
 
